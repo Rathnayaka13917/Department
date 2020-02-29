@@ -6,7 +6,7 @@ const departmentModle = require('../models/departmentModel');
 departmentRouts.post('/', async (req, res) => {
     const dip = departmentModle({
         departmentId: req.body.departmentId
-      
+
     });
 
     try {
@@ -20,7 +20,7 @@ departmentRouts.post('/', async (req, res) => {
 departmentRouts.get('/all', async (req, res) => {
 
     try {
-        const alldip= await departmentModle.find();
+        const alldip = await departmentModle.find();
         res.send(alldip);
 
     } catch (err) {
@@ -39,26 +39,26 @@ departmentRouts.get('/:departmentId', async (req, res) => {
 });
 
 departmentRouts.delete('/:departmentId', async (req, res) => {
-    try{
+    try {
         const deldip = await departmentModle.findByIdAndRemove(req.params.departmentId);
         res.send(deldip);
 
-    }catch (err) {
+    } catch (err) {
         res.send(err.message);
     }
 });
 
 departmentRouts.patch('/:departmentId', async (req, res) => {
-    try{
+    try {
         const updatedip = await departmentModle.findOneAndUpdate(
-            {_id:req.params.staffId},
-            {$set:{departmentId:req.body.departmentId}}
+            { _id: req.params.staffId },
+            { $set: { departmentId: req.body.departmentId } }
 
         );
         res.send(updatedip);
-    
 
-    }catch (err) {
+
+    } catch (err) {
         res.send(err.message);
     }
 })
