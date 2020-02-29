@@ -16,6 +16,8 @@ clientRouts.post('/', async(req, res) => {
     }
 });
 
+//this is get method for all
+
 clientRouts.get('/all', async (req, res) => {
 
     try{
@@ -27,6 +29,8 @@ clientRouts.get('/all', async (req, res) => {
     }
 });
 
+//this is get method spesific
+
 clientRouts.get('/:clientId', async (req, res) => {
     try{
         const specMember = await clientModel.findById(req.params.clientId);
@@ -36,6 +40,7 @@ clientRouts.get('/:clientId', async (req, res) => {
     }
 });
 
+//this is delete method
 clientRouts.delete('/:clientId', async (req, res) => {
     try{
         const delMember = await clientModel.findByIdAndRemove(req.params.clientId);
@@ -45,11 +50,12 @@ clientRouts.delete('/:clientId', async (req, res) => {
     }
 });
 
+//this is update method
 clientRouts.patch('/:clientId', async (req, res) => {
     try{
         const updateMember = await clientModle.findOneAndUpdate(
             {_id:req.params.clientId},
-            {$set:{clientName:req.body.clientName}}
+            {$set:{clientName:req.body.clientName}} 
 
         );
         res.send(updateMember);
