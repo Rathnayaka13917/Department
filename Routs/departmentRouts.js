@@ -2,7 +2,7 @@ const departmentRouts = require('express').Router();
 const departmentModle = require('../models/departmentModel');
 
 
-
+//this is the  log part  post method
 departmentRouts.post('/', async (req, res) => {
     const dip = departmentModle({
         departmentId: req.body.departmentId
@@ -17,6 +17,8 @@ departmentRouts.post('/', async (req, res) => {
     }
 });
 
+//this is the get all attributes parts
+
 departmentRouts.get('/all', async (req, res) => {
 
     try {
@@ -28,6 +30,7 @@ departmentRouts.get('/all', async (req, res) => {
     }
 });
 
+//this is get specific part or id 
 departmentRouts.get('/:departmentId', async (req, res) => {
     try {
         const specdip = await departmentModle.findById(req.params.departmentId);
@@ -38,6 +41,7 @@ departmentRouts.get('/:departmentId', async (req, res) => {
     }
 });
 
+//this is get id and delete all the attributes 
 departmentRouts.delete('/:departmentId', async (req, res) => {
     try {
         const deldip = await departmentModle.findByIdAndRemove(req.params.departmentId);
@@ -47,6 +51,8 @@ departmentRouts.delete('/:departmentId', async (req, res) => {
         res.send(err.message);
     }
 });
+
+//this ios the upadate part if we want
 
 departmentRouts.patch('/:departmentId', async (req, res) => {
     try {

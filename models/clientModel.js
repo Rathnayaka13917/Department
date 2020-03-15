@@ -1,6 +1,7 @@
 const mongooes = require('mongoose')
 const staffModel = mongooes.Schema({
 
+//this is the attributes
 
     clientId : {
         type : String,
